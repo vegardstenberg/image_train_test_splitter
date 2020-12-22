@@ -16,7 +16,8 @@ def create_test_train_folders(p): #making test and train folder for given path, 
 
 def move_images(p, test_pros=0.3):
     images = []
-    images.extend(glob(os.path.join(p, '*.jpg'))) #accessing all the images
+    for e in ['*.jpg', '*.png', '*.jpeg']: #going through each type
+        images.extend(glob(os.path.join(p, e))) #accessing all the images
 
     test_img_amt = int(len(images) * test_pros) #calculating the amount of test images based on test_pros
 
@@ -32,8 +33,8 @@ if __name__ == '__main__':
     print(" Thank you for using this image train test splitter, developed by Vegard Hansen Stenberg. ")
     print()
 
-    path = input("Please write your full path (e.g. 'C:\\Users\\Vegard\\Documents\\data') ")
-    test_pros = float(input("How many percent of the images should be for testing? (e.g. '0.5') "))
+    path = input("Please write your full path (e.g. 'C:\\Users\\User\\Documents\\data') ")
+    test_pros = float(input("How many percent of the images should be for testing? (e.g. 0.5) "))
 
     if path != "" and test_pros >= 0 and test_pros <= 1:
         path += '/*'
